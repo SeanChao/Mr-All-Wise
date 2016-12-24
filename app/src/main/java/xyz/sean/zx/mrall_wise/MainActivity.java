@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        initQuotes(); // 初始化水果数据
+        initQuotes(); // 初始化梗数据
         QuoteAdapter adapter = new QuoteAdapter(MainActivity.this,
                 R.layout.quote_item, quoteList);
-
 
         mListView = (ListView) findViewById(R.id.listview);
 
@@ -53,7 +53,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "传义大法好！", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("是的！",new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view){
+                                Toast.makeText(MainActivity.this,"那你还毛都不会？",Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .show();
             }
         });
 
