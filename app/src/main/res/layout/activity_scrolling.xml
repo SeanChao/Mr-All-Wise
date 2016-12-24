@@ -22,20 +22,24 @@
             app:contentScrim="?attr/colorPrimary"
             android:overScrollMode="ifContentScrolls"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/ic_zhao_b"
+            >
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="parallax"
+                app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
             <ImageView
                 android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_zhao"/>
+                android:overScrollMode="ifContentScrolls"
+                android:src="@drawable/ic_zhao"
+                app:layout_collapseMode="parallax"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
