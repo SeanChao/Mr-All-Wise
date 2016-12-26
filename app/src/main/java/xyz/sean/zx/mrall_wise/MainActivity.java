@@ -19,7 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView mListView;
-    private List<ZCYQuotes> quoteList = new ArrayList<ZCYQuotes>();
+    private List<ZCYQuotes> quoteList = new ArrayList<>();
     private String content[] = {"做好课前准备","上课！（降调）","（……五分钟新课……）",
             "上午第一节就犯困！","先说这个ding正作业","我一个礼拜就收这样的一次，有的同学就订正了3道题，你真的就只错了3道题？","接下来我们处理作业","我把答案写在黑板上，同学们批改一下","（下来兜一圈）","对的题要打对er号！",
             "一道一道地改！","我都兜了一圈了有的同学还没改完！（你慢你不行）","我来讲一下错的比较多的问题","有些同学上来第一题就错！",
@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
             "xxx，你还会些啥？","我先设一个t","把这个式子展开，就能de（3声）到这样一件事情","cnr，把腿放下来","总gan觉到同学们对数学学习没有热情！",
             "就说我们的课代表，能代表些啥？","我们没有形成数学学习的氛围","应该要有这样的领头羊","今天的作业，一课一练，就这样的两套题",
             "有些同学去网上搜答案，你下次碰到了还得错！","你不明白为什么要这么做！","（跟1班的）差距一次比一次大！","迷信点说，是不是我们命中注定要这样",
-            "同学们写份反思","我的作业真的很少了","还搁那er玩游戏！","希望同学们能批评我"
-            ,"The set is infinite" };
+            "同学们写份反思","我的作业真的很少了","还搁那er玩游戏！","希望同学们能批评我","你们给我提的意见，让我上课多讲些例题。接下来我都不在了。（笑）",
+            "zcy无辜的表情：我哪里写错了？ \nzcy诧异的眼神：怎么了？我又写错了？\nzcy邪魅的笑容：你看错两次就对了... \nzcy大怒，粉笔一扔：又写错了，这题不讲了，你们自己讨论",
+            "The set is infinite" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
