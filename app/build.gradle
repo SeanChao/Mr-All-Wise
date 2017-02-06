@@ -4,11 +4,11 @@ android {
     compileSdkVersion 24
     buildToolsVersion "25.0.1"
     defaultConfig {
-        applicationId "xyz.sean.zx.mrall_wise"
+        applicationId "xyz.sean.zx.xz.sean.mr_all_wise"
         minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0-初版"
+        versionName "1.2 in 2017"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -27,4 +27,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
+
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.6.2'
+    compile 'com.github.ctiao:ndkbitmap-armv7a:0.6.2'
+
+    compile 'com.github.ctiao:ndkbitmap-armv5:0.6.2'
+    compile 'com.github.ctiao:ndkbitmap-x86:0.6.2'
 }
