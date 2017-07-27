@@ -57,12 +57,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <xyz.sean.xz.mr_all_wise.MyListView
+            <xz.sean.mr_all_wise.MyListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/listview">
 
-            </xyz.sean.xz.mr_all_wise.MyListView>
+            </xz.sean.mr_all_wise.MyListView>
 
 
         </LinearLayout>
