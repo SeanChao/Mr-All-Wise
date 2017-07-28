@@ -1,15 +1,17 @@
 package xz.sean.mr_all_wise;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.appcompat.*;
-
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,10 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.xiaomi.channel.commonutils.logger.LoggerInterface;
+import com.xiaomi.mipush.sdk.Logger;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
             "还gě那er玩游戏！","希望同学们能批评我","你们给我提的意见，让我上课多讲些例题。接下来我都不在了。（笑）",
             "zcy无辜的表情：我哪里写错了？ \nzcy诧异的眼神：怎么了？我又写错了？\nzcy邪魅的笑容：你看错两次就对了...\nzcy大怒，粉笔一扔：又写错了，这题不讲了，你们自己讨论",
             "不要为了完成作业而ěr去完成作业！","我一个问题问下去，没有人反应，这就是市重点中学所谓的实验班？"};
+
+    public static final String APP_ID = "2882303761517595506";
+    public static final String APP_KEY = "5871759595506";
+    public static final String TAG = "xz.sean.mr_all_wise";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +100,30 @@ public class MainActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
         fixListViewHeight(mListView);
 
+        //Mi Push Sevice
+        //初始化push推送服务
+        if(shouldInit()) {
+            MiPushClient.registerPush(this, APP_ID, APP_KEY);
+        }
+        //打开Log
+        LoggerInterface newLogger = new LoggerInterface() {
 
+            @Override
+            public void setTag(String tag) {
+                // ignore
+            }
+
+            @Override
+            public void log(String content, Throwable t) {
+                Log.d(TAG, content, t);
+            }
+
+            @Override
+            public void log(String content) {
+                Log.d(TAG, content);
+            }
+        };
+        Logger.setLogger(this, newLogger);
     }
 
     @Override
@@ -160,5 +193,19 @@ public class MainActivity extends AppCompatActivity {
         ZCYQuotes quote = new ZCYQuotes(content);
         quoteList.add(quote);
         return quote;
+    }
+
+    //Mi push
+    private boolean shouldInit() {
+        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
+        List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
+        String mainProcessName = getPackageName();
+        int myPid = Process.myPid();
+        for (ActivityManager.RunningAppProcessInfo info : processInfos) {
+            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
