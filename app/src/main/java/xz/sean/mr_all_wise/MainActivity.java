@@ -80,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
         iv.setImageResource(R.drawable.ic_zhao);
 
         initQuotes(); // 初始化梗数据
-        QuoteAdapter adapter = new QuoteAdapter(MainActivity.this,
-                R.layout.quote_item, quoteList);
+        QuoteAdapter adapter = new QuoteAdapter(MainActivity.this, R.layout.quote_item, quoteList);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

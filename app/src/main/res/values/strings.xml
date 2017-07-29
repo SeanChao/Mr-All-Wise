@@ -1,12 +1,8 @@
 <resources>
     <string name="app_name">全智者</string>
-    <string name="large_text">
-        null
-    </string>
 
     <string name="action_runxu">谁run许你点我的！？</string>
     <string name="action_about">关于</string>
-    <string name="title_activity_about">AboutActivity</string>
 
     <string name="about">\n在“一个旷代的全智者的催逼”中诞生\n</string>
 </resources>
