@@ -5,4 +5,6 @@
     <string name="action_about">关于</string>
 
     <string name="about">\n在“一个旷代的全智者的催逼”中诞生\n</string>
+    <string name="QRCodeActivityLabel">扫一扫二维码入群</string>
+    <string name="action_qq">加入QQ群</string>
 </resources>

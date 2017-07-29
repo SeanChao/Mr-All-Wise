@@ -1,33 +1,28 @@
 package xz.sean.mr_all_wise;
 
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.xiaomi.channel.commonutils.logger.LoggerInterface;
-import com.xiaomi.mipush.sdk.Logger;
-import com.xiaomi.mipush.sdk.MiPushClient;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static xz.sean.mr_all_wise.MyUtility.mRandomNumber;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
             "zcy无辜的表情：我哪里写错了？ \nzcy诧异的眼神：怎么了？我又写错了？\nzcy邪魅的笑容：你看错两次就对了...\nzcy大怒，粉笔一扔：又写错了，这题不讲了，你们自己讨论",
             "不要为了完成作业而ěr去完成作业！","我一个问题问下去，没有人反应，这就是市重点中学所谓的实验班？"};
 
-    public static final String APP_ID = "2882303761517595506";
-    public static final String APP_KEY = "5871759595506";
-    public static final String TAG = "xz.sean.mr_all_wise";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,45 +75,42 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "传义大法好！", Snackbar.LENGTH_LONG)
-                        .setAction("是的！",new View.OnClickListener(){
-                            @Override
-                            public void onClick(View view){
-                                Toast.makeText(MainActivity.this,"那还不快去做传义卷？",Toast.LENGTH_LONG).show();
-                            }
-                        })
-                        .show();
+                int i = mRandomNumber(0,10);
+                if(i<5) {
+                    Snackbar.make(view, "传义大法好！", Snackbar.LENGTH_LONG)
+                            .setAction("是的！", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(MainActivity.this, "那还不快去做传义卷？", Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .show();
+                }else{
+                    int index = mRandomNumber(0,content.length);
+                    Snackbar.make(view,content[index],Snackbar.LENGTH_SHORT)
+                            .setAction("不会再错了",new View.OnClickListener(){
+                                @Override
+                                public void onClick(View v) {
+                                    Toast.makeText(MainActivity.this,"快去做订正作业！",Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            })
+                            .show();
+                }
             }
         });
 
         //ListView Setup
         mListView.setAdapter(adapter);
         fixListViewHeight(mListView);
-
-        //Mi Push Sevice
-        //初始化push推送服务
-        if(shouldInit()) {
-            MiPushClient.registerPush(this, APP_ID, APP_KEY);
-        }
-        //打开Log
-        LoggerInterface newLogger = new LoggerInterface() {
-
+        //ListView Click
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void setTag(String tag) {
-                // ignore
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                Toast.makeText(MainActivity.this,content[position],Toast.LENGTH_SHORT).show();
             }
+        });
 
-            @Override
-            public void log(String content, Throwable t) {
-                Log.d(TAG, content, t);
-            }
-
-            @Override
-            public void log(String content) {
-                Log.d(TAG, content);
-            }
-        };
-        Logger.setLogger(this, newLogger);
     }
 
     @Override
@@ -152,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_runxu:
                 Toast.makeText(MainActivity.this,"你给我等着",Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.action_qq:
+                Intent intent2 = new Intent(MainActivity.this , QRCodeActivity.class);
+                startActivity(intent2);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -177,34 +169,17 @@ public class MainActivity extends AppCompatActivity {
         // params.height设置ListView完全显示需要的高度
         params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
-
-
-
     }
 
     private void initQuotes() {
-
+        //遍历content数组，调用newQuote()加入quoteList
         for(int i = 0 ; i < content.length ; i++){
-            newQoute(content[i]);
+            newQuote(content[i]);
         }
     }
-    private ZCYQuotes newQoute(String content){
+    private ZCYQuotes newQuote(String content){
         ZCYQuotes quote = new ZCYQuotes(content);
         quoteList.add(quote);
         return quote;
-    }
-
-    //Mi push
-    private boolean shouldInit() {
-        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
-        List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
-        String mainProcessName = getPackageName();
-        int myPid = Process.myPid();
-        for (ActivityManager.RunningAppProcessInfo info : processInfos) {
-            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
