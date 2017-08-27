@@ -4,6 +4,7 @@
 
 ## 链接
 [查看赵传义百度百科](https://baike.baidu.com/item/%E8%B5%B5%E4%BC%A0%E4%B9%89/6257407?fr=aladdin)
+
 [点击这里下载最新版](https://github.com/SeanChao/Mr-All-Wise/releases/latest)
 
 ## 梗
