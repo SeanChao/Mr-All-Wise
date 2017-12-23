@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="xz.sean.mr_all_wise.mr_all_wise.PilgrimageActivity">
+    <item
+        android:id="@+id/action_reverse"
+        android:orderInCategory="100"
+        android:title="@string/action_reverse"
+        app:showAsAction="never" />
+
+</menu>

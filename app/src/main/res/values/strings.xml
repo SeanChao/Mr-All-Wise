@@ -2,9 +2,13 @@
     <string name="app_name">全智者</string>
 
     <string name="action_runxu">谁run许你点我的！？</string>
+    <string name="action_pilgrimage">考前祈福</string>
     <string name="action_about">关于</string>
 
     <string name="about">\n在“一个旷代的全智者的催逼”中诞生\n</string>
     <string name="QRCodeActivityLabel">扫一扫二维码入群</string>
     <string name="action_qq">加入QQ群</string>
+    <string name="title_activity_pilgrimage">考前祈福</string>
+
+    <string name="action_reverse">模式反转</string>
 </resources>

@@ -21,12 +21,14 @@
         <activity
             android:name=".AboutActivity"
             android:label="关于"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".QRCodeActivity"
-            android:label="@string/QRCodeActivityLabel">
-
-        </activity>
+            android:label="@string/QRCodeActivityLabel" />
+        <activity
+            android:name=".PilgrimageActivity"
+            android:label="@string/title_activity_pilgrimage"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

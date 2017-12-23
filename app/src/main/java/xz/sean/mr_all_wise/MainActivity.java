@@ -137,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,AboutActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.action_pilgrimage:
+                startActivity(new Intent(MainActivity.this, PilgrimageActivity.class));
+                break;
             case R.id.action_runxu:
                 Toast.makeText(MainActivity.this,"你给我等着",Toast.LENGTH_SHORT).show();
                 break;

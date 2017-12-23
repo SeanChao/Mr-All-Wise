@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    //buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "xz.sean.mr_all_wise"
         minSdkVersion 19
@@ -42,3 +42,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'kotlin-android-extensions'

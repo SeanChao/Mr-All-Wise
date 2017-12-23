@@ -8,6 +8,11 @@
         android:title="@string/action_runxu"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_pilgrimage"
+        android:orderInCategory="100"
+        android:title="@string/action_pilgrimage"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:title="@string/action_about"
