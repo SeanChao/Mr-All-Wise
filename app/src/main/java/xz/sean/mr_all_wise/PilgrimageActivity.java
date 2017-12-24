@@ -46,14 +46,14 @@ public class PilgrimageActivity extends AppCompatActivity {
     private void addScore(int ModeId){
         int deltaScore = (int) (Math.pow(-1,ModeId)*10* Math.random());
         score += deltaScore;
-        String toastText = "";
+        String toastText;
         if (ModeId == 0){
             toastText="增加了"+deltaScore+"分!";
         }else {
-            toastText="减少了"+deltaScore+"分!";
+            toastText="减少了"+(-1*deltaScore)+"分!";
         }
         Toast.makeText(PilgrimageActivity.this,toastText,Toast.LENGTH_SHORT).show();
-        scoreText.setText(score+"");
+        scoreText.setText(score);
     }
 
     @Override
